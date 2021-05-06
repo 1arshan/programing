@@ -33,10 +33,9 @@ class TargetSum
         prev.resize(target+1);
         for (auto x:prev)
             x=0;
-        prev[0]=1;
         cur.resize(target+1); 
         
-        //cout<<target<<endl;
+        cout<<target<<endl;
         
         //    return 1;
         find_ways(nums,target);
@@ -51,22 +50,17 @@ class TargetSum
             return 1;}
         else if (nums[0]==0)
         {
-            //for (auto x:nums)
-            for (int i=0;i<nums.size();i++)
+            for (auto x:nums)
             {
-                //cout<<"x: "<<x<<endl;
-                if (nums[i]>0)
+                if (x>0)
                     break;
                 else
                 {
-                    nums.erase(nums.begin());
-                    i--;
                     noz++;
                 }
         }
         if (target==0)
             {
-                cout<<noz<<endl;
                 count=pow(2,noz);
                 return count;
             }   
@@ -78,7 +72,24 @@ class TargetSum
             {
                 if (x<=i)
                 {
-                    cur[i]=prev[i-x]+prev[i];
+                    if (x+prev[i-x]>=prev[i])
+                    {
+                        cur[i]=x+prev[i-x];
+                        if (cur[i] ==target)
+                        {
+                            //cout<<"if"<<endl;
+                            count++;
+                        }
+                        else if(cur[i]>target)
+                        {
+                            //cout<<pow(2,noz)<<endl;
+                            count=pow(2,noz)*count;
+                            return count;
+                        }
+                    }
+                    else{
+                        cur[i]=prev[i];
+                    }
                 }
                 else
                 {
@@ -92,8 +103,8 @@ class TargetSum
             }cout<<endl;
 
         }
-        //cout<<prev[target]<<endl;
-        count=pow(2,noz)*prev[target];
+        //cout<<count<<endl;
+        count=pow(2,noz)*count;
         return count;
 
     }
@@ -111,8 +122,8 @@ class TargetSum
 
 int main()
 {
-    vector<int>nums{0,0,0,0,0,0,0,0,1};
-    int target =1;
+    vector<int>nums{9,7,0,3,9,8,6,5,7,6};
+    int target =2;
 
     TargetSum t(nums,target);
     cout<<t.count;
