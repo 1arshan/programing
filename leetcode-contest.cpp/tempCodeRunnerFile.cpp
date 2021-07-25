@@ -1,4 +1,2 @@
-for(auto x:matrix)
-        // {
-        //     bred++;
-        // }
+for(auto x:nums)
+            cout<<x<<" ";
