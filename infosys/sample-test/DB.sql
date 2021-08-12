@@ -86,3 +86,27 @@ create table allocation (empid varchar(100), empname varchar(100),projectid varc
 		insert into allocation (empid , empname ,projectid) values ("e302", 'mike','infy103');
 		insert into allocation (empid , empname ) values ("e303", 'jack');
     insert into allocation (empid , empname ) values ("e304", 'smith');
+
+select city,length(city) from station 
+order by length(city) DESC,city limit 1;
+
+select distinct city from station where city REGEXP "^[aeiou].*";
+
+
+select distinct city from station where city in (select distinct city from station where city REGEXP "^[^aeiou].*") 
+OR city in (select distinct city from station where city REGEXP "[^aeiou]$");
+
+SELECT CEILING(CAST(AVG(Salary) AS FLOAT) - AVG(CAST(REPLACE(Salary,'0','') AS FLOAT))) FROM EMPLOYEES;
+
+select name,
+case 
+when occupation ="Doctor" then "(D)"
+when occupation ="Actor" then "(A)"
+when occupation ="Singer" then "(S)"
+when occupation ="Professor" then "(P)"
+end As "occ"
+from occupations;
+
+select concat(name,'(',substring(occupation,1,1),')')
+from occupations
+order by name;

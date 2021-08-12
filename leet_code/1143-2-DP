@@ -1,0 +1,38 @@
+//revison recurssion
+
+
+class Solution {
+public:
+    
+    int recdp(vector<vector<int>>&v,string &x,string &y,int n1,int n2)
+    {
+        if(n1==0||n2==0)
+        {
+            return 0;
+        }
+        if(v[n1-1][n2-1]!=-1)
+            return v[n1-1][n2-1];
+        if(x[n1-1]==y[n2-1])
+        {
+            return v[n1-1][n2-1]= 1+recdp(v,x,y,n1-1,n2-1);
+        }
+        else
+        {
+            return v[n1-1][n2-1]=max(recdp(v,x,y,n1-1,n2),recdp(v,x,y,n1,n2-1));
+            
+        }
+    }
+    
+    int longestCommonSubsequence(string &text1, string &text2) {
+        vector<vector<int>>v(text1.size(),vector<int>(text2.size(),-1));
+        int temp=recdp(v,text1,text2,text1.size(),text2.size());
+        // for(auto x: v)
+        // {
+        //     for(auto y:x)
+        //         cout<<y<<" ";
+        //     cout<<endl;
+        // }
+        // return temp>0?temp
+        return temp;
+    }
+};
