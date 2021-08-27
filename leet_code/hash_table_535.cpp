@@ -13,7 +13,6 @@ int haffman_base(string str,array< int, 128>&a)
         ++a[u];
         
     }
-
 }
 
 int main()
