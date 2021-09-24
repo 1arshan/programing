@@ -16,6 +16,28 @@ void addEdge(vector<int>adj[],int u,int v)
 }
 
 
+void bfs(vector<int>adj[],int v,int s)
+{
+    vector<bool>visited(v+1,false);
+    queue<int>q;
+    visited[s]=true;
+    q.push(s);
+    while(q.empty()==false)
+    {
+        int u=q.front();
+        q.pop();
+        cout<<u<<" ";
+        for(auto x: adj[u])
+        {
+            if(visited[x]==false)
+            {
+                visited[x]=true;
+                q.push(x);
+            }
+        }
+    }
+}
+
 // A utility function to print the adjacency list
 // representation of graph
 void printGraph(vector<int> adj[], int V)
@@ -42,7 +64,8 @@ int main()
 	addEdge(adj, 1, 4);
 	addEdge(adj, 2, 3);
 	addEdge(adj, 3, 4);
-    printGraph(adj,V);
+    // printGraph(adj,V);
+    bfs(adj,V,0);
 	// printGraph(adj, V);
 	return 0;
 }
