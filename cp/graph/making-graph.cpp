@@ -2,13 +2,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// A utility function to add an edge in an
-// undirected graph.
-// void addEdge(vector<int> adj[], int u, int v)
-// {
-// 	adj[u].push_back(v);
-// 	adj[v].push_back(u);
-// }
 void addEdge(vector<int>adj[],int u,int v)
 {
     adj[u].push_back(v);
@@ -64,8 +57,6 @@ int main()
 	addEdge(adj, 1, 4);
 	addEdge(adj, 2, 3);
 	addEdge(adj, 3, 4);
-    // printGraph(adj,V);
     bfs(adj,V,0);
-	// printGraph(adj, V);
 	return 0;
 }
