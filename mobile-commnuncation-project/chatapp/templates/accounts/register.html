@@ -7,9 +7,9 @@
 	{{ form|crispy }}
 	<br>
 	<input type="submit" name="submit" class="btn btn-primary mb-2" value="Register">
-	<input type="reset" name="reset" class="btn btn-secondary mb-2" value="Reset">
+{#	<input type="reset" name="reset" class="btn btn-secondary mb-2" value="Reset">#}
 	<br>
-	<a href="{% url 'login' %}">Or Log into an existing account!</a>
+	<a href="{% url 'user_login' %}">Or Log into an existing account!</a>
 </form>
 
 {% endblock %}
