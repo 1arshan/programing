@@ -1,2 +1,2 @@
-t[x]==true)
-        //     return t
+ake_pair(b,w));
+    adj[b].push_back(m
